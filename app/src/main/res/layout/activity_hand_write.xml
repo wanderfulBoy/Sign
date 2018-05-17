@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:background="@color/white">
+
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_bac">
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:id="@+id/clear1"
+            android:background="@drawable/button_right_ange_shape"
+            android:text="清除"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/red"/>
+
+        <Button
+            android:id="@+id/save1"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_right_ange_shape"
+            android:text="保存并返回"
+            android:textColor="@color/red"
+            android:textSize="@dimen/twelve" />
+        <!--<Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/change"
+            android:text="改变颜色"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/changewidth"
+            android:text="改变宽度"
+            />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tint_friendly"
+            android:layout_marginTop="4dp"
+            android:textSize="13sp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/red"/>
+    </LinearLayout>
+
+    <com.flytexpress.sign.ui.sign_function.LinePathView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/view"
+        android:background="#FFFFFF"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

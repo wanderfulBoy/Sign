@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.flytexpress.sign.ui.sign.SignActivity">
+
+    <!--<com.baidu.mapapi.MapView
+         android:id="@+id/map_View"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+         android:clickable="true"
+         android:visibility="gone" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/order_delivery_title"
+            layout="@layout/title_with_right_text" />
+
+        <TextView
+            android:id="@+id/tv_see"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="android"
+            android:visibility="gone" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView android:id="@+id/tv_hasReceiveQuaility"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/red"
+                    android:text="@string/scan_count"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/linerlayout_shape">
+
+                    <EditText
+                        android:id="@+id/et_scanPKG"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:drawableRight="@mipmap/sweep"
+                        android:hint="@string/input_scan_edit"
+                        android:singleLine="true"
+                        android:imeOptions="actionDone"
+                        android:textColorHint="@color/font_back" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_postytype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/posttype"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_totalWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/total_weight"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_deliverWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/deliver_weight"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_detailTotalWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/detail_total_weight"
+                    android:textSize="16sp" />
+                <TextView android:id="@+id/tv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="12dp"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:text="位置："/>
+
+                <Button
+                    android:id="@+id/bu_sweep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/saoyisao"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bu_summitImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/button_right_ange_shape"
+                    android:text="@string/summit_image"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                    <Button
+                        android:id="@+id/bu_seeImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/see_image"
+                        android:background="@drawable/button_right_ange_shape"
+                        android:textColor="@color/white"
+                        android:visibility="gone"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <Button android:id="@+id/bu_receiveSummit"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/button_right_ange_shape"
+                    android:text="@string/summit"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

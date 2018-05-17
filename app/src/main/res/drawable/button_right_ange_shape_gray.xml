@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="#F6F6F6" />
+    <stroke
+        android:width="3.5dp"
+        android:color="#EDA372" /><!--描边的颜色-->
+
+    <corners android:radius="0dp" /><!--圆角弧度-->
+
+
+    <padding
+        android:bottom="5dp"
+        android:left="5dp"
+        android:right="5dp"
+        android:top="5dp" /><!--各方向的弧度-->
+
+</shape>

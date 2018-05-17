@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout android:id="@+id/lin_nouse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/title_with_right_text"></include>
+    </LinearLayout>
+
+    <com.flytexpress.sign.view.CustomViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lin_nouse"></com.flytexpress.sign.view.CustomViewPager>
+
+    <!-- <LinearLayout
+        android:id="@+id/ll_Navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/navigation_btn_bg"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnFriendList"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="资讯" />
+
+        <Button
+            android:id="@+id/btnGroupChat"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="VK" />
+
+        <Button
+            android:id="@+id/btnTopicList"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="话题" />
+    </LinearLayout> -->
+
+    <RadioGroup
+        android:id="@+id/main_radioGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/main_rb_home"
+            style="@style/main_tab_bottom"
+            android:background="@mipmap/img_actionbar_bottom_bg2"
+            android:checked="true"
+            android:drawableTop="@drawable/main_rb_home_selector"
+            android:text="@string/main_rb_home"
+            android:textColor="@drawable/main_rb_textcolor_selector" />
+
+        <RadioButton
+            android:id="@+id/main_rb_category"
+            style="@style/main_tab_bottom"
+            android:background="@mipmap/img_actionbar_bottom_bg2"
+            android:drawableTop="@drawable/main_rb_mylinli_selector"
+            android:text="@string/main_rb_category"
+            android:textColor="@drawable/main_rb_textcolor_selector" />
+
+        <RadioButton
+            android:id="@+id/main_rb_linliRoll"
+            style="@style/main_tab_bottom"
+            android:background="@mipmap/img_actionbar_bottom_bg2"
+            android:drawableTop="@drawable/main_rb_linliroll_selector"
+            android:text="@string/main_rb_linliRoll"
+            android:textColor="@drawable/main_rb_textcolor_selector" />
+
+        <!--  <RadioButton
+             android:id="@+id/main_rb_shoppingCart"
+             style="@style/main_tab_bottom"
+             android:background="@drawable/img_actionbar_bottom_bg2"
+             android:drawableTop="@drawable/main_rb_shoppingcart_selector"
+             android:text="@string/main_rb_shoppingCart"
+             android:textColor="@drawable/main_rb_textcolor_selector" />
+
+         <RadioButton
+             android:id="@+id/main_rb_MyLinli"
+             style="@style/main_tab_bottom"
+             android:background="@drawable/img_actionbar_bottom_bg2"
+             android:drawableTop="@drawable/main_rb_mylinli_selector"
+             android:text="@string/main_rb_MyLinli"
+             android:textColor="@drawable/main_rb_textcolor_selector" /> -->
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#00000000"
+        android:orientation="horizontal">
+
+        <!-- 显示提醒信息的button android:layout_weight=1  是3个butto，平分手机界面的宽度 -->
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:visibility="invisible" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:visibility="invisible" />
+
+        <!-- <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/main_carticon_btn"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="-130dp"
+            android:layout_weight="1"
+            android:background="#00000000" /> -->
+        <!-- 占位置的button，以便适应不同分辨率手机 -->
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:visibility="invisible" />
+        <!-- 占位置的button，以便适应不同分辨率手机 -->
+
+    </LinearLayout>
+
+    <!-- 实现提醒信息用的 -->
+
+</RelativeLayout>

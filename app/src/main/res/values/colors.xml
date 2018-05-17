@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#ffffffff</color>
+    <color name="light_gray">#ffe6e6e6</color>
+    <color name="black">#ff000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="gray_bac">#f1f1f1</color>
+    <color name="gold_tv">#f2c249</color>
+    <color name="gray">#8f8f8f</color>
+    <color name="gray4">#BEBEBE</color>
+    <color name="grey1">#858585</color>
+    <color name="dark">#FF222222</color>
+    <color name="bg_gray">#F2F2F2</color>
+    <color name="font_dark">#ff333333</color>
+    <color name="province_line_border">#C7C7C7</color>
+    <color name="trans">#00000000</color>
+    <color name="blue">#cc33b5e5</color>
+    <color name="trans_dark_grey">#80282828</color>
+    <color name="darker_grey">#666666</color>
+    <color name="red">#ffde3131</color>
+    <color name="check_gray">#E8E8E8</color>
+
+    <!-- 灰色 -->
+    <color name="blue_select">#0A69F7</color>
+    <color name="blue_unselect">#9FAEE7</color>
+    <color name="personal_gray">#BDC0C4</color>
+    <color name="personal_blue">#00a0e0</color>
+    <color name="login_blue">#2196f5</color>
+    <color name="title_gray">#9b9b9b</color>
+    <!-- 表灰色字体 -->
+    <color name="grey3">#F5F5F5</color>
+    <color name="grey2">#D6D6D6</color>
+    <!-- 背景主要颜色 -->
+    <color name="grey7">#CCCCCC</color>
+    <color name="lucency">#33000000</color><!-- 透明颜色 -->
+    <!--品红-->
+    <color name="fuchsin">#f05b72</color>
+
+    <color name="txt_general_bg">#333333</color>
+    <color name="bg1">#CCCCCC</color>
+    <color name="t_bg1">#333333</color>
+    <color name="hall_b_s">#00F6D9AF</color>
+    <color name="hall_b_e">#00D9AF6D</color>
+    <color name="hall_top_s">#5A555A</color>
+    <color name="chat_target">#FF8000</color>
+    <color name="menu_bg">#ff54acea</color>
+    <color name="menu_select">#ffffff</color>
+    <color name="txt_addion_hasmsg">#ffffff</color>
+    <color name="txt_addion_nomsg">#000000</color>
+    <color name="list_divider_meetingcreate">#999999</color>
+    <color name="solid_black">#ff000000</color>
+    <color name="solid_white">#ffffffff</color>
+    <color name="bg_blue">#FF1BA1E2</color>
+    <color name="toolbox_bg">#99aaaaaa</color>
+    <color name="solid_red">#f00</color>
+    <color name="solid_blue">#0000ff</color>
+    <color name="solid_green">#f0f0</color>
+    <color name="solid_yellow">#ffffff00</color>
+    <color name="dancen">#CCCC33</color>
+    <color name="brill_red">#ef555e</color>
+    <color name="b0b0b0">#ffb0b0b0</color>
+
+    <drawable name="user_moble_click">#E099CCFF</drawable>
+    <drawable name="user_moble_normal">#E0efefef</drawable>
+    <drawable name="user_addiontion_normal">#00000000</drawable>
+    <drawable name="meeting_tab_normal">#B3DBF8</drawable>
+    <drawable name="meeting_tab_pressed">#FF9933</drawable>
+    <drawable name="main_head">#6699CC</drawable>
+
+    <!-- 1.0.1 -->
+    <color name="fun_text_back">#993300</color>
+    <!--色调-->
+    <!-- <color name="gray_bac">#104E8B</color> -->
+    <color name="white_smoke">#F6F6F6</color>
+    <color name="font_back">#BDBDBD</color>
+
+    <!-- new UI -->
+    <color name="c_999999">#999999</color>
+    <color name="c_000000">#000000</color>
+    <color name="c_ff2f2f2f">#ff2f2f2f</color>
+    <color name="c_ffffffff">#ffffffff</color>
+    <color name="c_ff8c8c8c">#ff8c8c8c</color>
+    <color name="c_ff000000">#ff000000</color>
+    <color name="c_ff9d9d9d">#ff9d9d9d</color>
+    <color name="c_ffc4c4c4">#ffc4c4c4</color>
+    <color name="c_ff686868">#ff686868</color>
+    <color name="c_ffb80000">#ffb80000</color>
+    <color name="c_ff949494">#ff949494</color>
+    <color name="c_ff999999">#ff999999</color>
+    <color name="c_ff3d3d3d">#ff3d3d3d</color>
+    <color name="c_ffa5a5a5">#ffa5a5a5</color>
+    <color name="c_ff59595e">#ff59595e</color>
+    <color name="c_ff151515">#ff151515</color>
+    <color name="c_ff70a6e3">#ff70a6e3</color>
+    <color name="c_ff636363">#ff636363</color>
+    <color name="c_ffb4b4b4">#ffb4b4b4</color>
+    <color name="c_ff474747">#ff474747</color>
+    <color name="c_ff5d5d5d">#ff5d5d5d</color>
+    <color name="c_ffcacaca">#ffcacaca</color>
+    <color name="c_ffe9e9e9">#ffe9e9e9</color>
+    <color name="c_ffababab">#ffababab</color>
+    <color name="c_ffad0000">#ffad0000</color>
+    <color name="c_ff333333">#ff333333</color>
+    <color name="c_ffbebebe">#ffbebebe</color>
+    <color name="c_ffa2a2a2">#ffa2a2a2</color>
+    <color name="c_ff727272">#ff727272</color>
+    <color name="c_ff494949">#ff494949</color>
+    <color name="c_ffd54938">#ffd54938</color>
+    <color name="c_ffe0e0e0">#ffe0e0e0</color>
+    <color name="c_d1d1d1">#d1d1d1</color>
+    <color name="c_ff53b6fc">#ff53b6fc</color>
+    <color name="c_ff4a4a4a">#ff4a4a4a</color>
+    <color name="c_ff9d4431">#ff9d4431</color>
+    <color name="c_ff4d4e49">#ff4d4e49</color>
+    <color name="c_ff555555">#ff555555</color>
+    <color name="ltgray">#FFCCCCCC</color>
+    <color name="yellow">#FFFFFF00</color>
+    <color name="cyan">#FF00FFFF</color>
+    <color name="magenta">#FFFF00FF</color>
+    <color name="blackground">#FFD3D2D2</color>
+    <color name="dkgray">#FF444444</color>
+    <color name="orange">#FFFFAC22</color>
+    <color name="c_777777">#777777</color>
+    <color name="c_f5f5f5">#f5f5f5</color>
+    <color name="c_747474">#747474</color>
+    <color name="c_ffae00">#ffae00</color>
+    <color name="c_ffb1b1b1">#ffb1b1b1</color>
+    <color name="sidebar_back_color">#ff1c1c1e</color>
+    <color name="all_backgroud_color">#fff5f5f5</color>
+    <color name="c_f98800">#f98800</color>
+    <color name="c_97e019">#97e019</color>
+    <color name="c_00c6ff">#00c6ff</color>
+    <color name="c_3e3e3e">#3e3e3e</color>
+    <color name="c_ff25190a">#ff25190a</color>
+    <color name="c_ffd7b65d">#ffd7b65d</color>
+    <color name="c_ff1c1c1c">#ff3d3d3d</color>
+    <color name="c_ff282828">#ff282828</color>
+    <color name="c_ff7b7b7b">#ff7b7b7b</color>
+    <color name="c_fe5d5d">#fffe5d5d</color>
+    <color name="c_d3d2d7">#d3d2d7</color>
+    <drawable name="dw_ff3d3d3d">#ff3d3d3d</drawable>
+
+    <color name="c_ff2c2c2e">#ff2c2c2e</color>
+    <color name="c_ff707070">#ff707070</color>
+    <color name="c_ff7800">#ff7800</color>
+    <color name="c_ffa9a9a5">#ffa9a9a5</color>
+    <color name="c_ff6e6e6e">#ff6e6e6e</color>
+    <color name="sliding_menu_back">#ff2c2c2e</color>
+    <color name="sliding_menu_title_text_color">#ff999999</color>
+    <color name="sliding_menu_item_text_color">#ffb1b1b1</color>
+    <color name="sliding_menu_item_text_color_pressed">#ffffffff</color>
+    <color name="sliding_menu_item_pressed">#ff39393b</color>
+    <color name="sliding_menu_item">#00000000</color>
+    <color name="chat_theme_guide_bg">#BF000000</color>
+    <!-- 6.0.1 -->
+    <color name="c_9fcbff">#9fcbff</color>
+    <color name="c_157efb">#157efb</color>
+
+    <color name="c_333333">#333333</color>
+    <color name="c_888888">#888888</color>
+</resources>

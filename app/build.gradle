@@ -1,0 +1,130 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    aaptOptions.cruncherEnabled = false //不检查图片格式
+    aaptOptions.useNewCruncher = false  //不检查图片格式
+    useLibrary 'org.apache.http.legacy'
+
+    /*signingConfigs {//用于打包时起签名的配置（代码控制）
+        release {
+            keyAlias '123'
+            keyPassword '123456'
+            storeFile file('./xxx.keystore')
+            storePassword '123456'
+        }
+        config {
+            keyAlias '123'
+            keyPassword '123456'
+            storeFile file('./xxx.keystore')
+            storePassword '123456'
+        }
+    }*/
+    defaultConfig {
+        applicationId "com.flytexpress.sign"
+        minSdkVersion 16
+        targetSdkVersion 25
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi' ,'arm64-v8a',"x86"
+        }
+    }
+    //打包后应用名称 （用于设置打包后的apk名称，不用手改麻烦）
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            def fileName
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                if (variant.buildType.name.equals('release')) {
+                    fileName = "FlytExpressSign.apk"
+//                    fileName = "RELEASE${defaultConfig.versionName}.${getTime()}.apk"
+                } else if (variant.buildType.name.equals('debug')) {
+                    fileName = "FlytExpressSign.apk"
+                }
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+
+        }
+    }
+    buildTypes {//打包的类型
+       /* sit {
+            debuggable true
+        }*/
+        release {
+            debuggable true
+            shrinkResources true //资源压缩
+            minifyEnabled true //打开混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {//debug的配置，如果关闭debug，或者使用混淆文件会导致类被压缩，AS debug失败
+            debuggable true
+            shrinkResources false //资源压缩
+            minifyEnabled  false //打开混淆false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    /*sourceSets {//加载jnilibs里面的目录
+        main() {
+            jniLibs.srcDirs = ['libs']
+        }
+    }*/
+
+    dexOptions {
+        jumboMode true
+        javaMaxHeapSize "1g"
+        preDexLibraries = false
+    }
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+        // 防止在发布的时候出现因MissingTranslation导致Build Failed! 多语言文件获取失败
+        disable 'MissingTranslation'
+    }
+}
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    /*{25.3.1
+                exclude group: "com.android.support", module: "support-v4"
+            }*/
+    /* compile files('libs/android-logging-log4j-1.0.3.jar')
+                    compile files('libs/android-support-v4.jar')
+                    compile files('libs/bugly_crash_release.jar')
+                    compile files('libs/gson-2.2.2.jar')
+                    compile files('libs/log4j-1.2.17.jar')
+                    compile files('libs/Msc.jar')
+                    compile files('libs/okhttp-2.7.5.jar')
+                    compile files('libs/okio-1.8.0.jar')
+                    compile files('libs/org.apache.http.legacy.jar')
+                    compile files('libs/Sunflower.jar')
+                    compile files('libs/volley.jar')
+                    compile files('libs/xUtils-2.6.14.jar')*/
+    /*compile
+        'com.android.support.constraint:constraint-layout:1.0.2'*/
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'junit:junit:4.12'
+    compile 'com.huxq17.xrefreshview:xrefreshview:3.6.2'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'cn.trinea.android.common:trinea-android-common:4.2.15'
+    compile 'com.squareup.okio:okio:1.6.0'
+    compile 'com.squareup.okhttp:okhttp:2.4.0'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'pub.devrel:easypermissions:0.1.9'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.androidkun:xversionupdate:1.0.5'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile files('libs/baidumapapi.jar')
+    compile 'com.tencent.bugly:crashreport:latest.release' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
+//    compile 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    compile 'com.github.yuzhiqiang1993:zxing:2.0.0'
+}
