@@ -33,8 +33,8 @@ public class ExampleUnitTest {
         });
     }
     @Test
-    public void  testApp(){
+    public String  testApp(String str){
         //返回大写字母
-
+        return str.toUpperCase();
     }
 }
