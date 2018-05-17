@@ -1,5 +1,7 @@
 package com.flytexpress.sign;
 
+import com.flytexpress.sign.util.Tools;
+
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;
@@ -17,14 +19,16 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+
     @Test
-    public void testData(){
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss");
-        System.out.println("testData: "+sdf.format(new Date()));
+    public void testData() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss");
+        System.out.println("testData: " + sdf.format(new Date()));
     }
+
     @Test
-    public void testMain(){
-        MainActivity m=new MainActivity();
+    public void testMain() {
+        MainActivity m = new MainActivity();
         m.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -32,8 +36,12 @@ public class ExampleUnitTest {
             }
         });
     }
+
     @Test
-    public String  testApp(String str){
+    public String testApp(String str) {
+        if (Tools.isEmpty(str)) {
+            return "";
+        }
         //返回大写字母
         return str.toUpperCase();
     }
