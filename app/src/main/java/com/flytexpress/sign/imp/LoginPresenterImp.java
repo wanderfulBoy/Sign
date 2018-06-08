@@ -2,6 +2,8 @@ package com.flytexpress.sign.imp;
 
 import android.util.Log;
 
+import com.flytexpress.sign.SignApplication;
+import com.flytexpress.sign.bean.auth.AuthorizationContract;
 import com.flytexpress.sign.bean.login.LoginBean;
 import com.flytexpress.sign.config.MainConfig;
 import com.flytexpress.sign.port.login.LoginPort;
@@ -25,6 +27,7 @@ import java.io.IOException;
 public class LoginPresenterImp implements LoginPort {
     public final OnLoginListener listener = null;
     private String res;
+    private AuthorizationContract auth=new AuthorizationContract();
 
     @Override
     public void login(LoginBean loginBean, final OnLoginListener onLoginListener) {
@@ -42,7 +45,9 @@ public class LoginPresenterImp implements LoginPort {
                 .getStringFromJsonObject(loginBean));
         Log.i("TAG", GsonUtil.getInstance().getStringFromJsonObject(loginBean));
         Request request = new Request.Builder()
-                .url(MainConfig.URL + "/api/RpsLogin/Login").post(body).build();
+                .url(MainConfig.URL + "/api/RpsLogin/Login")
+                .addHeader("SecurityToken",Tools.computeSercet(auth, SignApplication.getInstance().getContext())+"")
+                .post(body).build();
         OkHttpUtil.enqueue(request, new Callback() {
 
             @Override

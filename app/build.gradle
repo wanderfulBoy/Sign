@@ -30,7 +30,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             // 设置支持的SO库架构
-            abiFilters 'armeabi' ,'arm64-v8a',"x86"
+            abiFilters 'armeabi', 'arm64-v8a', "x86"
         }
     }
     //打包后应用名称 （用于设置打包后的apk名称，不用手改麻烦）
@@ -51,7 +51,7 @@ android {
         }
     }
     buildTypes {//打包的类型
-       /* sit {
+        /* sit {
             debuggable true
         }*/
         release {
@@ -63,7 +63,7 @@ android {
         debug {//debug的配置，如果关闭debug，或者使用混淆文件会导致类被压缩，AS debug失败
             debuggable true
             shrinkResources false //资源压缩
-            minifyEnabled  false //打开混淆false
+            minifyEnabled false //打开混淆false
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -110,6 +110,9 @@ dependencies {
     /*compile
         'com.android.support.constraint:constraint-layout:1.0.2'*/
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile files('libs/baidumapapi.jar')
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
+//    compile 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'junit:junit:4.12'
@@ -122,9 +125,7 @@ dependencies {
     compile 'pub.devrel:easypermissions:0.1.9'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.androidkun:xversionupdate:1.0.5'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile files('libs/baidumapapi.jar')
-    compile 'com.tencent.bugly:crashreport:latest.release' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
-//    compile 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    compile 'com.tencent.bugly:crashreport:latest.release'
     compile 'com.github.yuzhiqiang1993:zxing:2.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }

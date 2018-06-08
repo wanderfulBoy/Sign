@@ -9,6 +9,8 @@ import android.os.Looper;
 import android.widget.ImageView;
 
 import com.flytexpress.sign.SignApplication;
+import com.flytexpress.sign.bean.auth.AuthorizationContract;
+import com.flytexpress.sign.util.Tools;
 import com.google.gson.Gson;
 import com.google.gson.internal.$Gson$Types;
 import com.squareup.okhttp.Call;
@@ -46,7 +48,7 @@ public class OkHttpClientManager {
     private OkHttpClient mOkHttpClient;
     private Handler mDelivery;
     private Gson mGson;
-
+    private AuthorizationContract auth=new AuthorizationContract();
 
     private static final String TAG = "OkHttpClientManager";
 
@@ -554,6 +556,7 @@ public class OkHttpClientManager {
         return new Request.Builder()
                 .url(url)
                 .addHeader("RpsToken", SignApplication.getInstance().getRpsToken() + "")
+                .addHeader("SecurityToken", Tools.computeSercet(auth, SignApplication.getInstance().getContext())+"")
                 .post(requestBody)
                 .build();
     }

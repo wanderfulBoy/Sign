@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
@@ -301,6 +302,14 @@ public class MainActivity extends BaseActivity implements LoginView {
     @Override
     public void OnFailed(LoginResult result) {
         ToastUtils.show(mContext, getResources().getText(R.string.login_faile));
+    }
+
+    @Override
+    public void getTime(long time) {
+        Log.d("TAG","服务器返回的时间"+time);
+        long serverUtcTime=time-(8*60*60*1000)*2;//后台返回时间转换为utc时间
+        SharedPreferenceCache.getInstance(SignApplication.getInstance().getContext()).putLong("timeStemp", serverUtcTime);
+        SharedPreferenceCache.getInstance(SignApplication.getInstance().getContext()).putLong("responseCurrentTime", SystemClock.elapsedRealtime());
     }
 
     // 显示加载框

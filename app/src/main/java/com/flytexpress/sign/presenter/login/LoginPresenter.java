@@ -117,6 +117,7 @@ public class LoginPresenter implements OnLoginListener, BasePresenter {
             versionData = GsonUtil.getInstance().getServerBean(
                     res, Version.class);
             if (versionData != null && versionData.Version != null) {
+                loginView.getTime(versionData.ServerUtcMilliseconds);
                 Log.i("TAG", "现在的版本号：" + versionData.Version + "\n安装app的版本号：" + nowVersion);
                 mAcitivity.runOnUiThread(new Runnable() {
                     @Override

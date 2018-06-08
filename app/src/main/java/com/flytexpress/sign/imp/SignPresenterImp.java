@@ -4,6 +4,7 @@ import android.os.Message;
 import android.util.Log;
 
 import com.flytexpress.sign.SignApplication;
+import com.flytexpress.sign.bean.auth.AuthorizationContract;
 import com.flytexpress.sign.bean.sign.PKGInfoRequest;
 import com.flytexpress.sign.bean.sign.TransferParentInfoResult;
 import com.flytexpress.sign.bean.sign.TransferReceiveParam;
@@ -11,6 +12,7 @@ import com.flytexpress.sign.config.MainConfig;
 import com.flytexpress.sign.model.sign.OnSignListener;
 import com.flytexpress.sign.port.sign.SignPort;
 import com.flytexpress.sign.util.GsonUtil;
+import com.flytexpress.sign.util.Tools;
 import com.flytexpress.sign.util.okhttp.OkHttpClientManager;
 import com.flytexpress.sign.util.okhttp.OkHttpUtil;
 import com.squareup.okhttp.Callback;
@@ -27,6 +29,7 @@ import static com.flytexpress.sign.port.login.LoginPort.JSON;
  */
 
 public class SignPresenterImp implements SignPort {
+    private AuthorizationContract auth=new AuthorizationContract();
     @Override
     public void requestPKG(PKGInfoRequest infoRequest, final OnSignListener onSignListener) {
         OkHttpClientManager.postAsyn(MainConfig.URL + "/api/Transfer/GetTransferParentModelAndRoute", new OkHttpClientManager.ResultCallback<TransferParentInfoResult>() {
@@ -60,7 +63,8 @@ public class SignPresenterImp implements SignPort {
                 .getStringFromJsonObject(param));
         Request request = new Request.Builder()
                 .url(MainConfig.URL + "/api/TransferScanReceive/CustomerSign")
-                    .addHeader("RpsToken", SignApplication.getInstance().getRpsToken())
+                .addHeader("RpsToken", SignApplication.getInstance().getRpsToken())
+                .addHeader("SecurityToken", Tools.computeSercet(auth, SignApplication.getInstance().getContext())+"")
                 .post(body)
                 .build();
         OkHttpUtil.enqueue(request, new Callback() {

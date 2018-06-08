@@ -44,7 +44,7 @@ public class SplashActivity extends Activity {
                     Intent intent = new Intent(SplashActivity.this, StartActivity.class);//进入启动页
                     startActivity(intent);
                 }else {
-                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);//进入启动页
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);//进入首页
                     startActivity(intent);
                 }
             }

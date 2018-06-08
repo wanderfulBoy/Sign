@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.text.DateFormat;
@@ -17,12 +18,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.flytexpress.sign.bean.auth.AuthorizationContract;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -44,6 +47,7 @@ import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
+import android.os.SystemClock;
 import android.speech.RecognizerIntent;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -64,6 +68,10 @@ import android.widget.Toast;
 
 public class Tools {
 	private static Tools tools;
+	public static final String key = "57BD4F2C1F7144E4A6EFE7C608040DE8";
+	public static final String Vector = "D675C721C1E64131";
+	public static final String sqlStr = "FlytExpress";
+	private static Gson gson = new GsonBuilder().disableHtmlEscaping().create();
 	public static Tools getInstance( Context context )
 	{
 		if ( tools == null )
@@ -816,6 +824,113 @@ public class Tools {
 
 		}
 		return result;
+	}
+	/**
+	 * AES算法 Authorization 算法对象 当前内容
+	 *
+	 * @return AES生成的加密字符串（包含一个对象，时间戳和秘钥）
+	 */
+	public static String computeSercet(AuthorizationContract auth, Context context) {
+		// System.arraycopy(key.getBytes("UTF-8"), 0, bKey, 0, bKey.length);
+		try {
+			long startTime = System.currentTimeMillis();
+			byte[] bKey = copyArray(key, 32);
+			// String res1 = new String(bKey,"UTF-8");
+			// System.out.println("看看值。。。。。：" + bKey + key.getBytes()+","+res1);
+			// byte[] bVector = new byte[16];
+			// Vector=Base64.encode(Vector);
+			// System.arraycopy(Vector.getBytes("UTF-8"), 0, bVector, 0,
+			// bVector.length);
+			byte[] bVector = copyArray(Vector, 16);
+			auth = new AuthorizationContract();
+//			String utcTime = getUTCTime();// 获取UTC时间
+			long timeStemp=SharedPreferenceCache.getInstance(context).getLong("timeStemp");//当时服务器的毫秒数
+			long currentTime=SharedPreferenceCache.getInstance(context).getLong("responseCurrentTime");//当时boot时间
+			String utcTime=stampToDate(timeStemp+(SystemClock.elapsedRealtime()-currentTime));//当前服务器时间+现在的boot时间-当时获取服务器时间时候的boot时间，得出两个时间的差，再加上，即可获取现在时间
+			auth.Secret = sqlStr;
+			auth.UtcTime = utcTime;
+			String au = gson.toJson(auth);
+			String onePass = AESCode.Encrypt(au, bKey, bVector);
+
+			System.out.println(onePass + gson.toJson(onePass));
+			String onePassStr = Base64New.encode(gson.toJson(onePass));// 结果
+			System.out.println("加密后的结果：" + onePassStr);
+			long secondTime = System.currentTimeMillis(); // 获取结束时间
+			System.out.println("加密算法时间：" + (secondTime - startTime));
+
+			String personStr = Base64New.decode(onePassStr);// 反解 String
+			String	jiemiPass1 = AESCode.Decrypt(personStr, bKey, bVector);
+			AuthorizationContract person = gson.fromJson(jiemiPass1,
+					AuthorizationContract.class);// 对于javabean直接给出class实例 long
+//			lastTime = System.currentTimeMillis(); // 获取结束时间
+//
+			System.out.println("当时服务器时间："+stampToDate(timeStemp)+",现在时间"+stampToDate(timeStemp+(SystemClock.elapsedRealtime()-currentTime))+jiemiPass1 + person.Secret + "结束时间：" +
+					stampToDate(timeStemp));
+
+			return onePassStr;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static String timeStempChangeDate(long ms) {
+		/**
+		 * 时间戳转日期
+		 *
+		 * @param ms
+		 * @return
+		 */
+		/*
+		 * if(ms==null){ ms=0; }
+		 */
+		long msl = (long) ms * 1000;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date temp = null;
+		try {
+			String str = sdf.format(msl);
+			temp = sdf.parse(str);
+			DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			TimeZone pst = TimeZone.getTimeZone("Etc/GMT+0");
+			// Date curDate = new Date();
+			Calendar calendar = Calendar.getInstance();
+			calendar.add(Calendar.SECOND, 0);
+			Date curDate = calendar.getTime();
+			dateFormatter.setTimeZone(pst);
+			return dateFormatter.format(temp);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public static String stampToDate(long s){
+		String res;
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		long lt = new Long(s);
+		Date date = new Date(lt);
+		res = simpleDateFormat.format(date);
+		return res;
+	}
+	/**
+	 * 复制数组的方法
+	 *
+	 * @param secretStr
+	 *            字符串
+	 * @param byteI
+	 *            转换为byte数组的位数
+	 * @return
+	 */
+	public static byte[] copyArray(String secretStr, int byteLength) {
+		byte[] bVector = new byte[byteLength];
+		try {
+			System.arraycopy(secretStr.getBytes("UTF-8"), 0, bVector, 0,
+					bVector.length);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return bVector;
 	}
 
 }

@@ -12,4 +12,5 @@ public interface LoginView extends BaseView {
     String getPassWord();//获取当前密码信息
     void OnSuccesssLogin(LoginResult result);
     void OnFailed(LoginResult result);
+    void getTime(long time);//获取服务器的时间
 }

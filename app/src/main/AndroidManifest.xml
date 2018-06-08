@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.flytexpress.sign"
     android:versionCode="1"
-    android:versionName="V1.1.1">
+    android:versionName="V1.1.2">
 
     <supports-screens
         android:anyDensity="true"
@@ -19,12 +19,13 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /><!--<获取精准位置信息，已经过6.0获取动态权限>-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- <获取精准位置信息，已经过6.0获取动态权限> -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <!--用于排除相同的名称 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- 用于排除相同的名称 -->
     <application
         android:name=".SignApplication"
         android:allowBackup="true"
@@ -58,12 +59,10 @@
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
         <activity
             android:name=".ui.sign.SignActivity"
-            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
             android:configChanges="screenSize|keyboardHidden|orientation|fontScale|locale|uiMode|screenLayout|layoutDirection"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:label="@string/app_name">
-
-        </activity>
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"></activity>
         <activity android:name=".ui.base.BaseActivity" />
         <activity
             android:name=".ui.base.BaseWebView"
@@ -75,14 +74,13 @@
         </activity>
         <activity
             android:name=".ui.main.MainFragmentPagerActivity"
-            android:configChanges="screenSize|keyboardHidden|orientation|fontScale|locale|uiMode|screenLayout|layoutDirection"></activity>
-        <activity android:name=".ui.sign_function.LandscapeActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|fontScale|locale|uiMode|screenLayout|layoutDirection" />
+        <activity
+            android:name=".ui.sign_function.LandscapeActivity"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.NoTitleBar"
-            ></activity>
+            android:theme="@android:style/Theme.NoTitleBar" />
 
-
-        <!-- bugly配置start-->
+        <!-- bugly配置start -->
         <!-- 配置APP ID -->
         <meta-data
             android:name="BUGLY_APPID"
@@ -95,11 +93,16 @@
         <meta-data
             android:name="BUGLY_APP_CHANNEL"
             android:value="xiaomi" />
-        <!-- 配置Bugly调试模式（true或者false）-->
+        <!-- 配置Bugly调试模式（true或者false） -->
         <meta-data
             android:name="BUGLY_ENABLE_DEBUG"
             android:value="true" />
-        <!-- bugly配置stop-->
+        <!-- bugly配置stop -->
+        <activity
+            android:name=".ui.average.CircleActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|fontScale|locale|uiMode|screenLayout|layoutDirection">
+
+        </activity>
     </application>
 
 </manifest>

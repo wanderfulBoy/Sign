@@ -18,13 +18,16 @@ import java.util.List;
 import cn.trinea.android.common.util.ToastUtils;
 import pub.devrel.easypermissions.EasyPermissions;
 
+/**
+ * 主要是实现沉浸状态栏和一次性获取权限的问题
+ */
 public class BaseActivity extends Activity implements EasyPermissions.PermissionCallbacks {
     private SystemBarTintManager tintManager;
     protected static final int NET_FAILURE = 1001;//所有的网络请求失败
     public static final int RC_CAMERA_AND_WIFI = 80001;
     //所要申请的权限
     String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.READ_PHONE_STATE,Manifest.permission.CAMERA};
-//    protected static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+//  protected static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
